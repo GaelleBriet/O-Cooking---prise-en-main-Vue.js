@@ -27,9 +27,11 @@ const hideLogoutBtn = () => {
 <template>
   <header id="header">
     <div class="brand">
-      <figure id="logo">
-        <img alt="10 minutes O'Four logo" src="../../assets/images/logo.svg" />
-      </figure>
+      <router-link to="/" class="menu-link is-active">
+        <figure id="logo">
+          <img alt="10 minutes O'Four logo" src="../../assets/images/logo.svg" />
+        </figure>
+      </router-link>
       <div id="title">
         <p>10 minutes</p>
         <h1>O'Four</h1>

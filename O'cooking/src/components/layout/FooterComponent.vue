@@ -1,17 +1,21 @@
-<script setup></script>
+<script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+</script>
 
 <template>
   <footer class="footer">
     <nav>
       <ul class="menu">
         <li>
-          <a class="menu-link is-active" href="/">Liste des recettes</a>
+          <router-link to="/recipe" class="menu-link is-active">Liste des recettes</router-link>
         </li>
         <li>
-          <a class="menu-link" href="/registration">Inscription</a>
+          <router-link to="/register" class="menu-link">Inscription</router-link>
         </li>
         <li>
-          <a class="menu-link" href="/login">Connexion</a>
+          <router-link to="/login" class="menu-link">Connexion</router-link>
         </li>
       </ul>
     </nav>
