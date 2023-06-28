@@ -2,13 +2,12 @@
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('counter', {
-  state: () => { 
+  state: () => {
     return {
-      isLoggedIn: true, 
+      isLoggedIn: true
     }
-  },
+  }
 })
-
 
 // export const useUserStore = defineStore('user', () => {
 //   const isLoggedIn = ref(true)

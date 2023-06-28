@@ -1,9 +1,27 @@
 <script setup>
 import { useUserStore } from '../../stores/user'
+import { ref } from 'vue'
 
-const userStore = useUserStore();
-const isLoggedIn = userStore.isLoggedIn;
+// définition du store et de la valeur de isLoggedIn
+const userStore = useUserStore()
+const isLoggedIn = userStore.isLoggedIn
 
+// définition d'une valeur pour voir ou cacher le bouton déconnexion
+// au départ le bouton est caché
+let showLogout = ref(false)
+
+// définition de fonctions pour afficher ou masquer le bouton déconnexion avec un évènement au click
+const showLogoutBtn = () => {
+  console.log('login', isLoggedIn)
+  if (isLoggedIn) {
+    showLogout.value = true
+  } else {
+    showLogout.value = false
+  }
+}
+const hideLogoutBtn = () => {
+  showLogout.value = false
+}
 </script>
 
 <template>
@@ -17,21 +35,47 @@ const isLoggedIn = userStore.isLoggedIn;
         <h1>O'Four</h1>
       </div>
     </div>
-
     <div v-if="isLoggedIn" id="account">
       <div id="name">
         <p>John Doe</p>
       </div>
-      <img id="accountIcon" src="../../assets/images/account-icon.png" alt="account icon" />
+      <img
+        id="accountIcon"
+        src="../../assets/images/account-icon.png"
+        alt="account icon"
+        @click="showLogoutBtn"
+      />
+      <div v-if="showLogout">
+        <a href="#" id="logout" @click="hideLogoutBtn">Déconnexion</a>
+      </div>
     </div>
   </header>
 </template>
 
-<style lang="scss">
+<style scoped lang="scss">
 #account {
   display: flex;
   align-items: center;
-  flex-direction: row-reverse;
+  justify-content: flex-end;
   cursor: pointer;
+  position: absolute;
+  top: 40px;
+  right: 10px;
+
+  #logout {
+    border: solid 1px #ccc;
+    border-radius: 5%;
+    padding: 5px 10px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    text-align: center;
+    letter-spacing: 1px;
+    background-color: #ccc;
+    outline: none;
+  }
 }
 </style>
