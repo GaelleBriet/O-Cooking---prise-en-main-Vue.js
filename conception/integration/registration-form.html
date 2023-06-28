@@ -1,0 +1,82 @@
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration form</title>
+  <link rel="stylesheet" href="./assets/styles/reset.css">
+  <link rel="stylesheet" href="./assets/styles/main.css">
+
+</head>
+
+<body class="app">
+  <header id="header">
+    <div class="brand">
+      <figure id="logo">
+        <img alt="Vue logo" src="../images/logo.svg" />
+      </figure>
+      <div id="title">
+        <p>10 minutes</p>
+        <h1>O'Four</h1>
+      </div>
+    </div>
+
+  </header>
+  <div class="main">
+    <h2 class="title">créer un compte</h2>
+
+    <form>
+      <div>
+        <label class="label" for="firstName">Prénom</label>
+        <input class="input" type="text" name="firstName" id="firstName" placeholder="John" />
+      </div>
+
+      <div>
+        <label class="label" for="lastName">Nom</label>
+        <input class="input" type="text" name="lastName" id="lastName" placeholder="Doe" />
+      </div>
+
+      <div>
+        <label class="label" for="email">E-mail</label>
+        <input class="input" type="email" name="email" id="email" placeholder="johndoe@ocooking.local" />
+      </div>
+
+      <div>
+        <label class="label" for="pseudo">Identifiant</label>
+        <input class="input" type="text" name="pseudo" id="pseudo" placeholder="John" />
+      </div>
+
+      <div>
+        <label class="label" for="pw">Mot de passe</label>
+        <input class="input" type="password" name="pw" id="pw" />
+      </div>
+
+      <div>
+        <label class="label" for="pwValidation">Confirmation du mot de passe</label>
+        <input class="input" type="password" name="pwValidation" id="pwValidation" />
+      </div>
+
+      <input class="submit" type="submit" value="S'inscrire" />
+    </form>
+  </div>
+
+
+  <footer class="footer">
+    <nav>
+      <ul class="menu">
+        <li>
+          <a class="menu-link is-active" href="/">Liste des recettes</a>
+        </li>
+        <li>
+          <a class="menu-link" href="/registration">Inscription</a>
+        </li>
+        <li>
+          <a class="menu-link" href="/login">Connexion</a>
+        </li>
+
+      </ul>
+    </nav>
+  </footer>
+</body>
+
+</html>
