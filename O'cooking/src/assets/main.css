@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css?family=Avenir|Helvetica|Arial&display=swap");
+
+.app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  background-color: #ffffff;
+  padding-bottom: 80px;
+}
+
+.main {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* header */
+#header {
+  background-color: #f0f4ee;
+  box-shadow: 0px 3px 10px #cad6c4;
+  margin-bottom: 60px;
+  padding: 1em;
+  text-decoration: none;
+  color: black;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#account {
+  display: flex;
+  align-items: center;
+}
+
+#name p {
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+#accountIcon {
+  height: 3em;
+  margin: 10px;
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+}
+
+#title p {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0px;
+}
+
+#title h1 {
+  font-size: 1.6em;
+  font-weight: lighter;
+}
+
+#logo {
+  height: 3rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo img {
+  height: 100%;
+}
+
+/* title */
+.title {
+  font-size: 1.625rem;
+  font-weight: bold;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* footer */
+.footer {
+  background-color: #ffffff;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  box-shadow: 0px -3px 10px #cad6c4;
+}
+
+.footer nav {
+  height: 100%;
+}
+
+.footer .menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  height: 100%;
+  font-weight: bold;
+}
+
+.footer .menu-link {
+  margin: 0 8px;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.footer .is-active {
+  color: #42b983;
+}
+
+/* recipe */
+.recipe {
+  background: #f0f4ee;
+  border-radius: 16px;
+  width: calc(100% - 2rem);
+  overflow: hidden;
+  margin: 0 auto 1rem;
+}
+
+.recipe .recipe-link {
+  text-decoration: none;
+}
+
+.recipe figure {
+  width: 100%;
+}
+
+.recipe img {
+  object-fit: cover;
+}
+
+.recipe div {
+  padding: 1rem 2rem;
+  text-align: left;
+}
+
+.recipe h3 {
+  font-size: 1rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.recipe p {
+  line-height: 1em;
+}
+
+/* login form */
+.recipe-form label {
+  display: block;
+  margin-bottom: 0.6em;
+  text-align: start;
+  font-size: 1.1em;
+}
+
+.input {
+  margin-bottom: 1.5em;
+  height: 40px;
+  width: 100%;
+  background-color: #f0f4ee;
+  border: none;
+  border-radius: 0.5em;
+  padding: 1.5rem 2rem;
+}
+
+.submit {
+  background-color: #42b983;
+  border: none;
+  padding: 0.6em 1.4em;
+  border-radius: 0.4em;
+  font-size: 1em;
+  display: block;
+  margin-top: 1em;
+  cursor: pointer;
+}
+
+/* single recipe */
+.single-recipe figure {
+  width: calc(100% - 2rem);
+  margin: 0 0 1rem;
+}
+
+.single-recipe img,
+.single-recipe p {
+  border-radius: 16px;
+  margin: 0 1rem;
+}
+
+.single-recipe p {
+  text-align: left;
+}
+
+/* comment */
+h2 {
+  text-align: left;
+  margin: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.comment {
+  border-radius: 4px;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: left;
+  background-color: #f0f4ee;
+}
+
+/* recipe form */
+textarea {
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  background-color: #f0f4ee;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
