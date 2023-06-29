@@ -5,13 +5,13 @@
     <h2 class="title">créer une recette</h2>
     <form>
       <div>
-        <label class="label" for="title">Titre</label>
+        <label class="label" for="title">Nom</label>
         <input
           class="input"
           type="text"
           name="title"
           id="title"
-          placeholder="Titre de la recette"
+          placeholder="Nom de la recette"
         />
       </div>
 
@@ -23,6 +23,11 @@
       <div>
         <label class="label" for="cost">Coût par personne</label>
         <input class="input" type="text" name="cost" id="cost" placeholder="1€" />
+      </div>
+
+      <div>
+        <label class="label" for="recipe">Ingrédients</label>
+        <p><textarea name="recipe" id="recipe" rows="10"></textarea></p>
       </div>
 
       <div>
