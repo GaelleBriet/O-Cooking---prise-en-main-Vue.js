@@ -9,13 +9,13 @@ const router = useRouter()
     <nav>
       <ul class="menu">
         <li>
-          <router-link to="/" class="menu-link is-active">Liste des recettes</router-link>
+          <RouterLink to="/" class="menu-link is-active">Liste des recettes</RouterLink>
         </li>
         <li>
-          <router-link to="/register" class="menu-link">Inscription</router-link>
+          <RouterLink to="/register" class="menu-link">Inscription</RouterLink>
         </li>
         <li>
-          <router-link to="/login" class="menu-link">Connexion</router-link>
+          <RouterLink to="/login" class="menu-link">Connexion</RouterLink>
         </li>
       </ul>
     </nav>
