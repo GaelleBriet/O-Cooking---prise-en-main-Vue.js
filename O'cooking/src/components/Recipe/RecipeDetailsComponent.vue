@@ -1,24 +1,81 @@
 <script setup>
-import RecipeCardComponent from './RecipeCardComponent.vue'
+import { getCapitalizedText } from '../../utils/textFormatter';
 import { useRecipesStore } from '../../stores/recipes'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
+
+// je récupère l'id passée dans la route
+const currentRecipeId = router.currentRoute.value.params.id
+// je récupère la recette correspondante à cette id
 const recipeStore = useRecipesStore()
-const recipes = recipeStore.data
+const currentRecipe = recipeStore.data[currentRecipeId - 1]
 
-console.log(recipeStore.data)
+// je récupère la liste des ingrédients de la recette
+const ingredientsList = currentRecipe.ingredients
+
+// l'expression régulière recherche les espaces ('\s') suivis d'un ou plusieurs chiffres ('(\d+)')
+// puis on applique un saut de ligne en utilisant $1 pour réinsérer les chiffres capturés
+const formatRecipeSteps = (recipe) => {
+  return recipe.replace(/\s(\d+)/g, '<br>$1');
+};
 </script>
 
 <template>
-   <div class="main single-recipe">
-    <h2 class="title">Pantouflet de légumes</h2>
-
-    <figure>
-      <img src="./assets/images/burger.jpg" alt="Pantouflet de légumes" />
-    </figure>
-    <p>Choisissez deux belles charentaises (gauche, droite ou une de chaque, peu importe) et versez-y vos légumes
-      blanchis à la
-      poêle. Mettez 10 minutes O'Four et remuez de temps en temps. Servez chaud avec une sauce au choix.</p>
+  <div class="container">
+    <div class="box">
+      <h2 class="title">{{ currentRecipe.name }}</h2>
+      <img
+        :src="`../../../public/${currentRecipe.image}`"
+        :alt="currentRecipe.name"
+        class="recipe-img"
+      />
+      <h3>Liste des ingrédients :</h3>
+      <ul>
+        <template v-for="ingredient in ingredientsList" :key="ingredient">
+          <li class="ingredient-list"><i class="fa-solid fa-cookie-bite"></i>{{ getCapitalizedText(ingredient) }}</li>
+        </template>
+      </ul>
+      <h3>Préparation :</h3>
+      <p v-html="formatRecipeSteps(currentRecipe.recipe)" class="recipe-steps"></p>
+    </div>
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.box {
+  width: 450px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  .recipe-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  ul {
+    margin-bottom: 1.5rem;
+    .ingredient-list {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      color: #666;
+      font-weight: 30;
+      text-align: left;
+      .fa-cookie-bite {
+        color: #666;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+  .recipe-steps {
+    font-size: 1rem;
+    color: #666;
+    text-align: left;
+    line-height: 2;
+    font-weight: 30;
+    margin-bottom: 1rem;
+
+  }
+}
+</style>
