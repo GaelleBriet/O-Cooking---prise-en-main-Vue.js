@@ -1,17 +1,21 @@
 <script setup>
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 const props = defineProps({
   image: String,
   imageAlt: String,
   recipeName: String,
-  recipeDescription: String
+  recipeDescription: String,
+  id: Number
 })
 </script>
 
 <template>
   <div class="recipe">
-    <a class="recipe-link" href="/recipe">
+    <RouterLink :to="{ path: `/recipe/${id}` }" class="recipe-link">
       <img :src="image" :alt="imageAlt" />
-    </a>
+    </RouterLink>
     <div>
       <h3>{{ recipeName }}</h3>
       <p>{{ recipeDescription }}</p>
@@ -32,7 +36,7 @@ const props = defineProps({
       width: 100%;
       height: 100%;
       max-height: 300px;
-      object-fit:fill;
+      object-fit: fill;
     }
   }
   h3 {
