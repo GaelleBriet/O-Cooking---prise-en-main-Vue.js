@@ -1,7 +1,9 @@
-<script setup></script>
+<script setup>
+import RecipeDetailsComponent from '../components/Recipe/RecipeDetailsComponent.vue';
+</script>
 
 <template>
-    <h1>Recipe</h1>
+    <RecipeDetailsComponent />
 </template>
 
 <style scoped lang="scss"></style>

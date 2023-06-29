@@ -22,9 +22,10 @@ const router = createRouter({
       component: RegisterView
     },
     {
-      path: '/recipe',
+      path: '/recipe/:id',
       name: 'recipe',
-      component: () => import('../views/RecipeView.vue')
+      component: () => import('../views/RecipeView.vue'),
+      props: true
     },
     {
       // path: '/about',

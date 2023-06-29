@@ -15,6 +15,7 @@ console.log(recipeStore.data)
       :imageAlt="recipe.name"
       :recipeName="recipe.name"
       :recipeDescription="recipe.description"
+      :id="recipe.id"
     />
   </template>
 </template>
