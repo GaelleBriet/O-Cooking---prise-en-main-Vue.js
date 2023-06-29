@@ -28,6 +28,11 @@ const router = createRouter({
       props: true
     },
     {
+      path: '/create-recipe',
+      name: 'createRecipe',
+      component: () => import('../views/RecipeFormView.vue'),
+    },
+    {
       // path: '/about',
       // name: 'about',
       // route level code-splitting
