@@ -27,10 +27,13 @@ const props = defineProps({
   align-items: center;
   text-align: center;
   margin-bottom: 2rem;
-  .recipe-link img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  .recipe-link {
+    img {
+      width: 100%;
+      height: 100%;
+      max-height: 300px;
+      object-fit:fill;
+    }
   }
   h3 {
     font-size: 1.2rem;
