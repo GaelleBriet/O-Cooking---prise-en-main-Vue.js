@@ -1,6 +1,6 @@
 <script setup>
 import TitleComponent from '../components/TitleComponent.vue'
-import RecipeListComponentVue from '../components/Recipe/RecipeListComponent.vue';
+import RecipeListComponentVue from '../components/Recipe/RecipeListComponent.vue'
 
 const title = 'recettes'
 </script>

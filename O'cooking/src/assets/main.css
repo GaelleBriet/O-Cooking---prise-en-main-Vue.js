@@ -134,6 +134,7 @@
 
 .recipe .recipe-link {
   text-decoration: none;
+  width: 100%;
 }
 
 .recipe figure {
@@ -234,4 +235,8 @@ textarea {
   background-color: #f0f4ee;
   padding: 1rem;
   margin-bottom: 1rem;
+}
+
+.router-link-active {
+  color: #42b983;
 }
