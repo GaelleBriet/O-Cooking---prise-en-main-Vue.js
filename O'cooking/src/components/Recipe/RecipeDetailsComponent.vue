@@ -1,24 +1,28 @@
 <script setup>
-import { getCapitalizedText } from '../../utils/textFormatter';
+import { getCapitalizedText } from '../../utils/textFormatter'
 import { useRecipesStore } from '../../stores/recipes'
-import { useRouter } from 'vue-router'
+import { useRoute } from 'vue-router'
 
-const router = useRouter()
+const route = useRoute()
+const recipesStore = useRecipesStore()
 
-// je récupère l'id passée dans la route
-const currentRecipeId = router.currentRoute.value.params.id
-// je récupère la recette correspondante à cette id
-const recipeStore = useRecipesStore()
-const currentRecipe = recipeStore.data[currentRecipeId - 1]
+// je récupère la recette grâce à l'id passé dans la route
+const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
 
-// je récupère la liste des ingrédients de la recette
+// // je récupère l'id passée dans la route
+// const currentRecipeId = router.currentRoute.value.params.id
+// // je récupère la recette correspondante à cette id
+// const recipeStore = useRecipesStore()
+// const currentRecipe = recipeStore.data[currentRecipeId - 1]
+
+// // je récupère la liste des ingrédients de la recette
 const ingredientsList = currentRecipe.ingredients
 
-// l'expression régulière recherche les espaces ('\s') suivis d'un ou plusieurs chiffres ('(\d+)')
-// puis on applique un saut de ligne en utilisant $1 pour réinsérer les chiffres capturés
+// // l'expression régulière recherche les espaces ('\s') suivis d'un ou plusieurs chiffres ('(\d+)')
+// // puis on applique un saut de ligne en utilisant $1 pour réinsérer les chiffres capturés
 const formatRecipeSteps = (recipe) => {
-  return recipe.replace(/\s(\d+)/g, '<br>$1');
-};
+  return recipe.replace(/\s(\d+)/g, '<br>$1')
+}
 </script>
 
 <template>
@@ -32,12 +36,12 @@ const formatRecipeSteps = (recipe) => {
       />
       <h3>Liste des ingrédients :</h3>
       <ul>
-        <template v-for="ingredient in ingredientsList" :key="ingredient">
-          <li class="ingredient-list"><i class="fa-solid fa-cookie-bite"></i>{{ getCapitalizedText(ingredient) }}</li>
-        </template>
-      </ul>
-      <h3>Préparation :</h3>
-      <p v-html="formatRecipeSteps(currentRecipe.recipe)" class="recipe-steps"></p>
+      <template v-for="ingredient in ingredientsList" :key="ingredient">
+        <li class="ingredient-list"><i class="fa-solid fa-cookie-bite"></i>{{ getCapitalizedText(ingredient) }}</li>
+      </template>
+    </ul>
+    <h3>Préparation :</h3>
+    <p v-html="formatRecipeSteps(currentRecipe.recipe)" class="recipe-steps"></p>
     </div>
   </div>
 </template>
@@ -75,7 +79,25 @@ const formatRecipeSteps = (recipe) => {
     line-height: 2;
     font-weight: 30;
     margin-bottom: 1rem;
-
   }
 }
 </style>
+
+<!-- <div class="container">
+  <div class="box">
+    <h2 class="title">{{ currentRecipe.name }}</h2>
+    <img
+      :src="`../../../public/${currentRecipe.image}`"
+      :alt="currentRecipe.name"
+      class="recipe-img"
+    />
+    <h3>Liste des ingrédients :</h3>
+    <ul>
+      <template v-for="ingredient in ingredientsList" :key="ingredient">
+        <li class="ingredient-list"><i class="fa-solid fa-cookie-bite"></i>{{ getCapitalizedText(ingredient) }}</li>
+      </template>
+    </ul>
+    <h3>Préparation :</h3>
+    <p v-html="formatRecipeSteps(currentRecipe.recipe)" class="recipe-steps"></p>
+  </div>
+</div> -->
