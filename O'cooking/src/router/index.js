@@ -28,7 +28,7 @@ const router = createRouter({
       props: true
     },
     {
-      path: '/create-recipe',
+      path: '/createRecipe',
       name: 'createRecipe',
       component: () => import('../views/RecipeFormView.vue'),
     },
