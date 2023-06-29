@@ -1,7 +1,7 @@
 <script setup>
 import TitleComponent from '../components/TitleComponent.vue'
 import RecipeListComponentVue from '../components/Recipe/RecipeListComponent.vue'
-import { getUppercaseText } from '../helpers/textFormatter'
+import { getUppercaseText } from '../utils/textFormatter'
 </script>
 
 <template>
