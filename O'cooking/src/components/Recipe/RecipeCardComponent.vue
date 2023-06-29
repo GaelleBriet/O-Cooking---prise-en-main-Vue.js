@@ -26,15 +26,16 @@ defineProps({
   justify-content: center;
   align-items: center;
   text-align: center;
+  margin-bottom: 2rem;
   .recipe-link img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
   h3 {
-    font-size: 2rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
-    fontt-weight: bold;
+    font-weight: bold;
     text-transform: uppercase;
   }
 }
