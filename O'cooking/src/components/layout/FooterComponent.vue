@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const userStore = useUserStore()
-const isLoggedIn = computed(() => userStore.isLoggedIn)
+const isLoggedIn = computed(() => userStore.user.isLoggedIn)
 
 function login() {
   userStore.login()

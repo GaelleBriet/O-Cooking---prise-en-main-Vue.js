@@ -3,7 +3,7 @@ import { useUserStore } from '../../stores/user'
 import { ref, computed } from 'vue'
 
 const userStore = useUserStore()
-const isLoggedIn = computed(() => userStore.isLoggedIn)
+const isLoggedIn = computed(() => userStore.user.isLoggedIn)
 // définition du store et de la valeur de isLoggedIn
 // const isLoggedIn = ref(true)
 // const userStore = useUserStore()
