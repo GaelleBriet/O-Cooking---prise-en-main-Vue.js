@@ -10,7 +10,7 @@ const isLoggedIn = ref(userStore.isLoggedIn)
 // const isLoggedIn = computed(() => userStore.isLoggedIn)
 </script>
 
-<template>
+<template></template>
   <footer class="footer">
     <nav>
       <ul class="menu">
