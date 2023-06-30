@@ -7,23 +7,24 @@ const recipeStore = useRecipesStore()
 const saveRecipe = (e) => {
   e.preventDefault()
 
-  const title = e.target.title.value
+  const name = e.target.name.value
   const description = e.target.description.value
   const ingredients = e.target.ingredients.value
   const recipe = e.target.recipe.value
+  const image = 'hotdog.jpg'
 
-  const image = 
   const newRecipe = {
-    title,
+    name,
     description,
     ingredients,
-    recipe
+    recipe,
+    image
   }
 
   recipeStore.saveRecipe(newRecipe)
 
   e.target.reset()
-  e.target.title.value = ''
+  e.target.name.value = ''
   e.target.description.value = ''
   e.target.ingredients.value = ''
   e.target.recipe.value = ''
@@ -37,14 +38,14 @@ const saveRecipe = (e) => {
     <h2 class="title">créer une recette</h2>
     <form @submit="saveRecipe">
       <div>
-        <label class="label" for="title">Nom</label>
+        <label class="label" for="name">Nom</label>
         <input
           class="input"
           type="text"
-          name="title"
-          id="title"
+          name="name"
+          id="name"
           placeholder="Nom de la recette"
-          v-model="title"
+          v-model="name"
         />
       </div>
 
