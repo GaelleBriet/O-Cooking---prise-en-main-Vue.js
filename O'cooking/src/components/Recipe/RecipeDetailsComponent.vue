@@ -2,18 +2,17 @@
 import { getCapitalizedText } from '../../utils/textFormatter'
 import { useRecipesStore } from '../../stores/recipes'
 import { useRoute } from 'vue-router'
+//import { useRecipesStore} from '../../stores/recipes2'
 
 const route = useRoute()
 const recipesStore = useRecipesStore()
-
 // je récupère la recette grâce à l'id passé dans la route
-const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
+ const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
 
-// // je récupère l'id passée dans la route
-// const currentRecipeId = router.currentRoute.value.params.id
-// // je récupère la recette correspondante à cette id
-// const recipeStore = useRecipesStore()
-// const currentRecipe = recipeStore.data[currentRecipeId - 1]
+
+ // const currentRecipe = recipesStore.fetchRecipeByIdFromService(parseInt(route.params.id));
+ // currentRecipe.value = await recipesStore.fetchRecipeByIdFromService(id)
+
 
 // // je récupère la liste des ingrédients de la recette
 const ingredientsList = currentRecipe.ingredients
@@ -82,22 +81,3 @@ const formatRecipeSteps = (recipe) => {
   }
 }
 </style>
-
-<!-- <div class="container">
-  <div class="box">
-    <h2 class="title">{{ currentRecipe.name }}</h2>
-    <img
-      :src="`../../../public/${currentRecipe.image}`"
-      :alt="currentRecipe.name"
-      class="recipe-img"
-    />
-    <h3>Liste des ingrédients :</h3>
-    <ul>
-      <template v-for="ingredient in ingredientsList" :key="ingredient">
-        <li class="ingredient-list"><i class="fa-solid fa-cookie-bite"></i>{{ getCapitalizedText(ingredient) }}</li>
-      </template>
-    </ul>
-    <h3>Préparation :</h3>
-    <p v-html="formatRecipeSteps(currentRecipe.recipe)" class="recipe-steps"></p>
-  </div>
-</div> -->

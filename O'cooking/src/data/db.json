@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "image": "burger.jpg",
+    "name": "Burger frites",
+    "description": "Savourez un délicieux burger accompagné de frites croustillantes !",
+    "ingredients": [
+      "pain à burger",
+      "steak haché",
+      "fromage",
+      "salade",
+      "tomate",
+      "oignon",
+      "sauce burger"
+    ],
+    "recipe": "1. Faites cuire le steak haché dans une poêle. 2. Préparez les légumes en tranchant la salade, la tomate et l'oignon. 3. Faites griller les pains à burger. 4. Sur la moitié inférieure du pain, disposez le steak haché cuit, le fromage, la salade, la tomate, l'oignon et la sauce burger. 5. Refermez le burger avec la moitié supérieure du pain. 6. Accompagnez le burger de frites croustillantes et dégustez !"
+  },
+  {
+    "id": 2,
+    "image": "pizza.jpg",
+    "name": "Pizza margherita",
+    "description": "Dégustez une délicieuse pizza margherita avec une croûte croustillante et du fromage fondant !",
+    "ingredients": ["pâte à pizza", "sauce tomate", "mozzarella", "basilic"],
+    "recipe": "1. Préchauffez le four à la température recommandée pour la pâte à pizza. 2. Étalez la pâte à pizza sur une plaque de cuisson. 3. Étalez la sauce tomate sur la pâte. 4. Ajoutez la mozzarella sur la sauce tomate. 5. Parsemez de basilic. 6. Enfournez la pizza et faites cuire jusqu'à ce que la croûte soit croustillante et le fromage fondu.\n7. Sortez la pizza du four et laissez-la refroidir légèrement avant de déguster."
+  },
+  {
+    "id": 3,
+    "image": "salad.jpg",
+    "name": "Salade verte",
+    "description": "Savourez une salade verte fraîche et croquante avec une vinaigrette légère !",
+    "ingredients": ["laitue", "concombre", "tomate", "oignon", "vinaigrette"],
+    "recipe": "1. Lavez et essorez la laitue. 2. Coupez le concombre, la tomate et l'oignon en dés. 3. Dans un grand bol, mélangez la laitue, le concombre, la tomate et l'oignon. 4. Ajoutez la vinaigrette et mélangez bien. 5. Servez la salade verte fraîche et dégustez !"
+  }
+]
