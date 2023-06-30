@@ -10,16 +10,17 @@ const props = defineProps({
   id: Number
 })
 
-const showRecipePageById = (id) => {
-console.log('RC : showRecipePageById')
-router.push(`/recipe/${id}`)
-}
+// const showRecipePageById = (id) => {
+// console.log('RC : showRecipePageById')
+// router.push(`/recipe/${id}`)
+// }
+// @click="showRecipePageById(id)"
 </script>
 
 <template>
   <div class="recipe">
     <RouterLink :to="{ path: `/recipe/${id}` }" class="recipe-link">
-      <img :src="image" :alt="imageAlt" @click="showRecipePageById(id)"/>
+      <img :src="image" :alt="imageAlt" />
     </RouterLink>
     <div>
       <h3>{{ recipeName }}</h3>

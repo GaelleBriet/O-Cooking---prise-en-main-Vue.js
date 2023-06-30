@@ -5,9 +5,12 @@ import { ref } from 'vue'
 
 const router = useRouter()
 
-// définition du store et de la valeur de isLoggedIn
 const userStore = useUserStore()
 const isLoggedIn = ref(userStore.$state.isLoggedIn)
+console.log('isLoggedIn.value : ', isLoggedIn.value);
+const login = () => {
+  userStore.login()
+}
 </script>
 
 <template>
@@ -25,7 +28,7 @@ const isLoggedIn = ref(userStore.$state.isLoggedIn)
             <RouterLink to="/register" class="menu-link">Inscription</RouterLink>
           </li>
           <li>
-            <p class="menu-link">Connexion</p>
+            <p class="menu-link" @click="login">Connexion</p>
           </li>
         </template>
       </ul>

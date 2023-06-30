@@ -4,8 +4,6 @@ import { useRecipesStore } from '../../stores/recipes'
 
 const recipeStore = useRecipesStore()
 const recipes = recipeStore.data
-
-console.log(recipeStore.data)
 </script>
 
 <template>

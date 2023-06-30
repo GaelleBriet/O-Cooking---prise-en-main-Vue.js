@@ -3,8 +3,9 @@ import { useUserStore } from '../../stores/user'
 import { ref } from 'vue'
 
 // définition du store et de la valeur de isLoggedIn
-const userStore = useUserStore()
-const isLoggedIn = userStore.isLoggedIn
+// const userStore = useUserStore()
+// const isLoggedIn = userStore.isLoggedIn
+const isLoggedIn = ref(true);
 
 // définition d'une valeur pour voir ou cacher le bouton déconnexion
 // au départ le bouton est caché
@@ -12,8 +13,7 @@ let showLogout = ref(false)
 
 // définition de fonctions pour afficher ou masquer le bouton déconnexion avec un évènement au click
 const showLogoutBtn = () => {
-  console.log('login', isLoggedIn)
-  if (isLoggedIn) {
+  if (isLoggedIn.value) {
     showLogout.value = true
   } else {
     showLogout.value = false
