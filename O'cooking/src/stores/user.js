@@ -12,7 +12,8 @@ export const useUserStore = defineStore('users', {
       pseudo: String,
       password: String,
       pwValidation: String
-    }
+    },
+    users: []
   }),
   actions: {
     login() {
@@ -24,7 +25,7 @@ export const useUserStore = defineStore('users', {
       this.user.isLoggedIn = false
     },
     register(user) {
-      this.user.push(user)
+      this.users.push(user)
       console.log(user)
     }
   }
