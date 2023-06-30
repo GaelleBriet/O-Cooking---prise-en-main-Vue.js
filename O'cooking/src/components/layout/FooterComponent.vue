@@ -1,13 +1,19 @@
 <script setup>
-// import { useRouter } from 'vue-router'
 import { useUserStore } from '../../stores/user'
-import { computed, ref } from 'vue'
-
-// const router = useRouter()
+import { computed } from 'vue'
 
 const userStore = useUserStore()
-const isLoggedIn = ref(userStore.isLoggedIn)
-// const isLoggedIn = computed(() => userStore.isLoggedIn)
+const isLoggedIn = computed(() => userStore.isLoggedIn)
+
+function login() {
+  userStore.login()
+}
+
+function logout() {
+  userStore.logout()
+}
+
+
 </script>
 
 <template>
@@ -22,7 +28,7 @@ const isLoggedIn = ref(userStore.isLoggedIn)
             <RouterLink to="/createRecipe" class="menu-link">Créer une recette</RouterLink>
           </li>
           <li>
-            <p class="menu-link" @click="isLoggedIn = false">Déconnexion</p>
+            <p class="menu-link" @click="logout">Déconnexion</p>
           </li>
         </template>
         <template v-if="!isLoggedIn">
@@ -30,7 +36,7 @@ const isLoggedIn = ref(userStore.isLoggedIn)
             <RouterLink to="/register" class="menu-link">Inscription</RouterLink>
           </li>
           <li>
-            <p class="menu-link" @click="isLoggedIn = true">Connexion</p>
+            <p class="menu-link" @click="login">Connexion</p>
           </li>
         </template>
       </ul>

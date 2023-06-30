@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import RecipesService from '../services/recipes.js'
+import RecipesService from '../Services/recipes.js'
 
 export const useRecipesStore = defineStore('recipes', {
   state: () => ({
