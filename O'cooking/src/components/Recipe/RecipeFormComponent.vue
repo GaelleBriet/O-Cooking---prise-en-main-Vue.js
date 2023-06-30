@@ -6,13 +6,7 @@
     <form>
       <div>
         <label class="label" for="title">Nom</label>
-        <input
-          class="input"
-          type="text"
-          name="title"
-          id="title"
-          placeholder="Nom de la recette"
-        />
+        <input class="input" type="text" name="title" id="title" placeholder="Nom de la recette" />
       </div>
 
       <div>
