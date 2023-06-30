@@ -1,11 +1,14 @@
 import { defineStore } from 'pinia'
 import { getFromStorage, setToStorage } from '../Services/Helpers/useLocalStorage'
-import { reactive } from 'vue'
+//import { reactive } from 'vue'
+
 
 export const useUserStore = defineStore('users', {
   state: () =>
-    reactive({
-      isLoggedIn: getFromStorage('isLoggedIn') || false
+    ({
+      isLoggedIn: getFromStorage('isLoggedIn') || false,
+      name: String,
+      password: String,
     }),
   actions: {
     login() {

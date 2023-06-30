@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 const recipeStore = useRecipesStore()
+
 const saveRecipe = (e) => {
   e.preventDefault()
 
@@ -25,7 +26,7 @@ const saveRecipe = (e) => {
 
   recipeStore.saveRecipe(newRecipe)
 
-  e.target.reset()
+  //e.target.reset()
   e.target.name.value = ''
   e.target.description.value = ''
   e.target.ingredients.value = ''

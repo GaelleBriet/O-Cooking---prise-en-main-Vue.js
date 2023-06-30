@@ -1,12 +1,15 @@
 <script setup>
 import { useUserStore } from '../../stores/user'
 import { computed } from 'vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const userStore = useUserStore()
 const isLoggedIn = computed(() => userStore.isLoggedIn)
 
 function login() {
   userStore.login()
+  router.push('/login')
 }
 
 function logout() {
