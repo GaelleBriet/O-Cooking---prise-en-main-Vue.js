@@ -12,13 +12,15 @@ const saveRecipe = (e) => {
   const ingredients = e.target.ingredients.value
   const recipe = e.target.recipe.value
   const image = 'hotdog.jpg'
+  const id = 11
 
   const newRecipe = {
     name,
     description,
     ingredients,
     recipe,
-    image
+    image,
+    id
   }
 
   recipeStore.saveRecipe(newRecipe)
@@ -29,7 +31,7 @@ const saveRecipe = (e) => {
   e.target.ingredients.value = ''
   e.target.recipe.value = ''
 
-  router.push('/')
+  router.push('/recipe/11')
 }
 </script>
 
