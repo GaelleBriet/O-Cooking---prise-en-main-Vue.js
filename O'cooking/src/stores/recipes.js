@@ -12,5 +12,10 @@ export const useRecipesStore = defineStore('recipes', {
     getRecipeById: (state) => (id) => {
       return state.data.find((recipe) => recipe.id === id) || null
     }
+  },
+  actions: {
+    saveRecipe(recipe) {
+      this.data.push(recipe)
+    }
   }
 })
