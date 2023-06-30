@@ -1,9 +1,11 @@
 <script setup>
 import { useUserStore } from '../../stores/user'
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
+const userStore = useUserStore()
+const isLoggedIn = computed(() => userStore.isLoggedIn)
 // définition du store et de la valeur de isLoggedIn
-const isLoggedIn = ref(true)
+// const isLoggedIn = ref(true)
 // const userStore = useUserStore()
 // const isLoggedIn = ref(userStore.isLoggedIn)
 
@@ -19,7 +21,9 @@ const showLogoutBtn = () => {
     showLogout.value = false
   }
 }
-const hideLogoutBtn = () => {
+
+const logout = () => {
+  userStore.logout()
   showLogout.value = false
 }
 </script>
@@ -41,15 +45,21 @@ const hideLogoutBtn = () => {
       <div id="name">
         <p>John Doe</p>
       </div>
-      <img
-        id="accountIcon"
-        src="../../assets/images/account-icon.png"
-        alt="account icon"
-        @click="showLogoutBtn"
-      />
-      <div v-if="showLogout">
-        <a href="#" id="logout" @click="hideLogoutBtn">Déconnexion</a>
-      </div>
+      <ul>
+        <li>
+          <img
+            id="accountIcon"
+            src="../../assets/images/account-icon.png"
+            alt="account icon"
+            @click="showLogoutBtn"
+          />
+        </li>
+        <li>
+          <div v-if="showLogout" class="logoutButton">
+            <a href="#" id="logout" @click="logout">Déconnexion</a>
+          </div>
+        </li>
+      </ul>
     </div>
   </header>
 </template>
@@ -64,6 +74,15 @@ const hideLogoutBtn = () => {
   top: 40px;
   right: 10px;
 
+  .logoutButton{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    cursor: pointer;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+  }
   #logout {
     border: solid 1px #ccc;
     border-radius: 5%;
