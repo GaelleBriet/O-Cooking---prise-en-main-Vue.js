@@ -7,17 +7,13 @@ const route = useRoute()
 const recipesStore = useRecipesStore()
 // je récupère la recette grâce à l'id passé dans la route
 const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
-
-// const currentRecipe = recipesStore.fetchRecipeByIdFromService(parseInt(route.params.id));
-// currentRecipe.value = await recipesStore.fetchRecipeByIdFromService(id)
+console.log(currentRecipe)
 
 // // je récupère la liste des ingrédients de la recette
 const ingredientsList = currentRecipe.ingredients
 
-// // l'expression régulière recherche les espaces ('\s') suivis d'un ou plusieurs chiffres ('(\d+)')
-// // puis on applique un saut de ligne en utilisant $1 pour réinsérer les chiffres capturés
-const formatRecipeSteps = (recipe) => {
-  return recipe.replace(/\s(\d+)/g, '<br>$1')
+function splitIngredients(ingredientsList) {
+  return ingredientsList.split('<br>')
 }
 </script>
 
@@ -26,23 +22,24 @@ const formatRecipeSteps = (recipe) => {
     <div class="box">
       <h2 class="title">{{ currentRecipe.name }}</h2>
       <img
-        :src="`../../../public/${currentRecipe.image}`"
+        src="https://picsum.photos/400/300?grayscale"
         :alt="currentRecipe.name"
         class="recipe-img"
       />
       <h3>Liste des ingrédients :</h3>
       <ul>
-        <template v-for="ingredient in ingredientsList" :key="ingredient">
+        <template v-for="ingredient in splitIngredients(ingredientsList)" :key="ingredient">
           <li class="ingredient-list">
             <i class="fa-solid fa-cookie-bite"></i>{{ getCapitalizedText(ingredient) }}
           </li>
         </template>
       </ul>
-      <h3>Préparation :</h3>
-      <p v-html="formatRecipeSteps(currentRecipe.recipe)" class="recipe-steps"></p>
+      <h3>Auteur :</h3>
+      <p>{{ currentRecipe.user.username }}</p>
     </div>
   </div>
 </template>
+<!-- :src="`../../../public/${currentRecipe.image}`" -->
 
 <style scoped lang="scss">
 .box {

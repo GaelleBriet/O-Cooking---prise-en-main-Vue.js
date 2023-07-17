@@ -8,12 +8,13 @@ const recipeStore = useRecipesStore()
 recipeStore.fetchAll()
 const recipes = recipeStore.getRecipes
 console.log(recipes)
-
 </script>
 
 <template>
   <template v-for="recipe in recipes" :key="recipe.id">
     <RecipeCardComponent
+      image="https://picsum.photos/400/300?grayscale"
+      :imageAlt="recipe.name"
       :recipeName="recipe.name"
       :recipeDescription="recipe.description"
       :id="recipe.id"
