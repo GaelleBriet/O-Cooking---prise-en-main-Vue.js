@@ -2,7 +2,6 @@
 import { getCapitalizedText } from '../../utils/textFormatter'
 import { useRecipesStore } from '../../stores/recipes'
 import { useRoute } from 'vue-router'
-//import { useRecipesStore} from '../../stores/recipes2'
 
 const route = useRoute()
 const recipesStore = useRecipesStore()
