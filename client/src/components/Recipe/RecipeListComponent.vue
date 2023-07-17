@@ -3,14 +3,17 @@ import RecipeCardComponent from './RecipeCardComponent.vue'
 import { useRecipesStore } from '../../stores/recipes'
 
 const recipeStore = useRecipesStore()
-const recipes = recipeStore.data
+// const recipes = recipeStore.data
+
+recipeStore.fetchAll()
+const recipes = recipeStore.getRecipes
+console.log(recipes)
+
 </script>
 
 <template>
   <template v-for="recipe in recipes" :key="recipe.id">
     <RecipeCardComponent
-      :image="recipe.image"
-      :imageAlt="recipe.name"
       :recipeName="recipe.name"
       :recipeDescription="recipe.description"
       :id="recipe.id"
@@ -19,3 +22,10 @@ const recipes = recipeStore.data
 </template>
 
 <style scoped lang="scss"></style>
+<!-- <RecipeCardComponent
+  :image="recipe.image"
+  :imageAlt="recipe.name"
+  :recipeName="recipe.name"
+  :recipeDescription="recipe.description"
+  :id="recipe.id"
+/> -->
