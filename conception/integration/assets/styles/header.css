@@ -1,0 +1,59 @@
+/* header */
+#header {
+  background-color: #f0f4ee;
+  box-shadow: 0px 3px 10px #cad6c4;
+  margin-bottom: 60px;
+  padding: 1em;
+  text-decoration: none;
+  color: black;
+}
+
+.flex-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#account {
+  display: flex;
+  align-items: center;
+}
+
+#name p {
+  font-size: 1.2em;
+  font-weight: bold;
+  line-height: 30px;
+}
+
+#accountIcon {
+  height: 3em;
+  margin: 10px;
+}
+
+.brand {
+  display: flex;
+  justify-content: center;
+}
+
+#title p {
+  font-size: 1em;
+  font-weight: bold;
+  margin: 0px;
+}
+
+#title h1 {
+  font-size: 1.6em;
+  font-weight: lighter;
+}
+
+#logo {
+  height: 3rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo img {
+  height: 100%;
+}

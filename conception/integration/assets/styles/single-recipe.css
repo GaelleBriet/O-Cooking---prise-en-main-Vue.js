@@ -1,0 +1,14 @@
+.single-recipe figure {
+  width: calc(100% - 2rem);
+  margin: 0 0 1rem;
+}
+
+.single-recipe img,
+.single-recipe p {
+  border-radius: 16px;
+  margin: 0 1rem;
+}
+
+.single-recipe p {
+  text-align: left;
+}
