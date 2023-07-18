@@ -10,6 +10,7 @@ export const useRecipesStore = defineStore('recipes', {
   state: () => ({
     // data: getFromStorage('recipes') || []
     data: reactive([]),
+    comments: reactive([]),
     loaded: false
   }),
   getters: {
@@ -38,6 +39,35 @@ export const useRecipesStore = defineStore('recipes', {
       this.data.push(obj)
       // this.data = await this.fetchAllRecipesFromService()
       this.loaded = true
+    },
+    async getComments(id) {
+      const response = await fetch(
+        `http://gaellebriet-server.eddi.cloud:8090/recipes/${id}/comments`
+      )
+      const data = await response.json()
+      this.comments = data
+      console.log(this.comments)
+      return data
+    },
+    async fetchRecipe(id) {
+      try {
+        const response = await fetch(`http://gaellebriet-server.eddi.cloud:8090/recipes/${id}`)
+
+        if (!response.ok) {
+          throw new Error(`Impossible de récupérer la recette avec l'identifiant ${id}.`)
+        }
+
+        const data = await response.json()
+        // Save the retrieved recipe in the state.
+        this.data = data
+        return data
+      } catch (error) {
+        console.error(error)
+        throw error
+      }
+    },
+    resetRecipe() {
+      this.recipe = null
     }
   }
 })
