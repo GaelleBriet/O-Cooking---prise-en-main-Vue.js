@@ -12,10 +12,9 @@ export async function fetchAllRecipesFromDatabase() {
   return response
 }
 
-export async function fetchOneRecipeWithCommentsFromDatabase(id) {
-  const numericId = Number(id)
-  const { data } = await axios.get(`http://gaellebriet-server.eddi.cloud:8090/recipes/${id}`)
-  return data
+export async function fetchCommentsForRecipeFromDatabase(id) {
+  const response = await axios.get(`http://gaellebriet-server.eddi.cloud:8090/recipes/${id}/comments`);
+  return response.data;
 }
 
 export async function getOneRecipe(id) {
@@ -39,6 +38,14 @@ export async function addOneRecipeToDatabase(recipe) {
       console.log(error.toJSON())
     })
 }
+
+export async function fetchOneRecipeWithCommentsFromDatabase(id) {
+  // const numericId = Number(id)
+  const { data } = await axios.get(`http://gaellebriet-server.eddi.cloud:8090/recipes/${id}`)
+  return data
+}
+
+
 // export async function addRecipe($recipe) {
 //   const response = await axios
 //     .post('http://localhost:8090/recipes', {

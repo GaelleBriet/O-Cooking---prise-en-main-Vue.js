@@ -2,63 +2,46 @@
 import { getCapitalizedText } from '../../utils/textFormatter'
 import { useRecipesStore } from '../../stores/recipes'
 import { useRoute } from 'vue-router'
-import { onMounted, computed } from 'vue'
+import { onMounted, computed, ref } from 'vue'
+import CommentListComponent from '../Comment/CommentListComponent.vue'
 
 const route = useRoute()
 const recipesStore = useRecipesStore()
+const currentRecipeId = parseInt(route.params.id)
 
 // const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
 const currentRecipe = computed(() => {
-  const id = parseInt(route.params.id)
-  return recipesStore.getRecipeById(id)
+  return recipesStore.getRecipeById(currentRecipeId)
 })
-const currentComments = computed( ()  => {
-  const id = parseInt(route.params.id)
-  return recipesStore.getComments(id)
-})
-console.log(currentComments.value);
-// const ingredientsList = computed(() => {
-//   return currentRecipe.value.ingredients
-// })
-// console.log(ingredientsList.value);
-// const ingredientsList = currentRecipe.value.ingredients
-// function splitIngredients(ingredientsList) {
-//   return ingredientsList.split('<br>')
-// }
 
-// onMounted(async () => {
-//   const id = parseInt(route.params.id)
-//   await recipesStore.fetchRecipe(id)
-// })
+const currentComments = computed(() => {
+  return recipesStore.getCommentsByRecipedId(currentRecipeId)
+})
+
+onMounted(async () => {
+  await recipesStore.fetchCommentsForRecipeFromService(currentRecipeId)
+})
 </script>
 
 <template>
   <div class="container">
     <div class="box">
-      <h2 class="title">{{ currentRecipe.name }}</h2>
-      <img
-        src="https://picsum.photos/400/300?grayscale"
-        :alt="currentRecipe.name"
-        class="recipe-img"
-      />
-      <h3>Liste des ingrédients :</h3>
-      <p>{{ currentRecipe.ingredients }}</p>
-      <h3>Auteur :</h3>
-      <p>{{ currentRecipe.user.username }}</p>
-      <h3>Commentaires :</h3>
-      <p>{{ currentRecipe.comments }}</p>
+      <template v-if="currentRecipe">
+        <h2 class="title">{{ currentRecipe.name }}</h2>
+        <img
+          src="https://picsum.photos/400/300?grayscale"
+          :alt="currentRecipe.name"
+          class="recipe-img"
+        />
+        <h3>Liste des ingrédients :</h3>
+        <p>{{ currentRecipe.ingredients }}</p>
+        <h3>Auteur :</h3>
+        <p>{{ currentRecipe.user.username }}</p>
+      </template>
     </div>
+    <CommentListComponent :comments="currentComments" />
   </div>
 </template>
-<!-- :src="`../../../public/${currentRecipe.image}`" -->
-
-<!-- <ul>
-  <template v-for="ingredient in splitIngredients(ingredientsList)" :key="ingredient">
-    <li class="ingredient-list">
-      <i class="fa-solid fa-cookie-bite"></i>{{ getCapitalizedText(ingredient) }}
-    </li>
-  </template>
-</ul> -->
 
 <style scoped lang="scss">
 .box {
