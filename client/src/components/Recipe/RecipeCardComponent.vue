@@ -10,11 +10,6 @@ defineProps({
   id: Number
 })
 
-// const showRecipePageById = (id) => {
-// console.log('RC : showRecipePageById')
-// router.push(`/recipe/${id}`)
-// }
-// @click="showRecipePageById(id)"
 </script>
 
 <template>

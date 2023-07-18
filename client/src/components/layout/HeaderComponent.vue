@@ -4,10 +4,6 @@ import { ref, computed } from 'vue'
 
 const userStore = useUserStore()
 const isLoggedIn = computed(() => userStore.user.isLoggedIn)
-// définition du store et de la valeur de isLoggedIn
-// const isLoggedIn = ref(true)
-// const userStore = useUserStore()
-// const isLoggedIn = ref(userStore.isLoggedIn)
 
 // définition d'une valeur pour voir ou cacher le bouton déconnexion
 // au départ le bouton est caché

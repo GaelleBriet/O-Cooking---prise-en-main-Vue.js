@@ -7,7 +7,6 @@ const route = useRoute()
 const recipesStore = useRecipesStore()
 // je récupère la recette grâce à l'id passé dans la route
 const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
-console.log(currentRecipe)
 
 // // je récupère la liste des ingrédients de la recette
 const ingredientsList = currentRecipe.ingredients

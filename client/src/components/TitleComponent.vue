@@ -7,6 +7,7 @@ defineProps({
 
 <template>
   <h2 :className="className">{{ title }}</h2>
+  <slot></slot>
 </template>
 
 <style scoped lang="scss">
