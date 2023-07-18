@@ -9,12 +9,13 @@ const props = defineProps({
 <template>
   <form @submit.prevent="handleSubmit">
     <InputComponent v-for="(item, i) in form" :key="i" :recipe="item" />
-    <button type="submit">Créer la recette</button>
+    <input class="submit" type="submit" value="Sauvegarder" />
   </form>
 </template>
 
 <style lang="scss" scoped>
-button {
+
+input {
   width: 500px;
   padding: 1rem;
 }

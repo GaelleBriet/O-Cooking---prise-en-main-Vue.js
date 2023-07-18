@@ -82,19 +82,10 @@ const saveRecipe = (e) => {
 </template>
 
 <style scoped lang="scss">
+
 input,
 textarea {
   width: 500px;
   padding: 1rem;
 }
 </style>
-
-<!-- <div>
-  <label class="label" for="duration">Temps de cuisson</label>
-  <input class="input" type="text" name="duration" id="duration" placeholder="10 minutes" v-model="recipe.time" />
-</div>
-
-<div>
-  <label class="label" for="cost">Coût par personne</label>
-  <input class="input" type="text" name="cost" id="cost" placeholder="1€" v-model="recipe.cost" />
-</div> -->
