@@ -6,7 +6,7 @@ import { onMounted, computed } from 'vue'
 
 const route = useRoute()
 const recipesStore = useRecipesStore()
-// je récupère la recette grâce à l'id passé dans la route
+
 
 // const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
 const currentRecipe = computed(() => {
@@ -18,11 +18,9 @@ const ingredientsList = computed(() => {
   return currentRecipe.value.ingredients
 })
 console.log(ingredientsList.value);
-// je récupère la liste des ingrédients de la recette
 // const ingredientsList = currentRecipe.value.ingredients
 
 function splitIngredients(ingredientsList) {
-  console.log(ingredientsList);
   return ingredientsList.split('<br>')
 }
 

@@ -2,7 +2,7 @@ import { defineStore } from 'pinia'
 import { setToStorage } from '../Services/Helpers/useLocalStorage'
 import { getFromStorage } from '../Services/Helpers/useLocalStorage'
 import { fetchAllRecipesFromDatabase } from '../Services/DataLayer/recipes'
-import { fetchOneRecipeWithCommentsFromDatabase } from '../Services/DataLayer/recipes'
+import { getOneRecipe } from '../Services/DataLayer/recipes'
 import { addOneRecipeToDatabase } from '../Services/DataLayer/recipes'
 import { reactive, ref } from 'vue'
 
@@ -27,10 +27,10 @@ export const useRecipesStore = defineStore('recipes', {
     },
     async fetchOneRecipeWithCommentsFromService(id) {
       //this.data = await fetchOneRecipeWithCommentsFromDatabase(id)
-      this.loaded = false;
-      const recipe = await fetchOneRecipeWithCommentsFromDatabase(id)
-      this.data = recipe;
-      this.loaded = true;
+      this.loaded = false
+      const recipe = await getOneRecipe(id)
+      this.data = recipe
+      this.loaded = true
       return recipe
     },
     async addRecipe(obj) {

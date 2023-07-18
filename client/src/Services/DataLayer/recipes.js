@@ -18,13 +18,12 @@ export async function fetchOneRecipeWithCommentsFromDatabase(id) {
 }
 
 export async function getOneRecipe(id) {
-  try {
     const response = await axios.get('http://gaellebriet-server.eddi.cloud:8090/recipes/' + id)
-    return response.data
-  } catch (error) {
-    console.error("Une erreur s'est produite lors de la récupération d'une recette : ", error)
-    throw error
-  }
+    .then((response) => response.data)
+    .catch((error) => {
+      console.log(error.toJSON())
+    })
+    return response
 }
 
 export async function addOneRecipeToDatabase(recipe) {
