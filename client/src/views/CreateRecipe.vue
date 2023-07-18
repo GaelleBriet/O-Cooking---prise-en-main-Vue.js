@@ -15,8 +15,8 @@ const form = [
 </script>
 
 <template>
-  <div>
-    <h1>Créer une recette</h1>
+  <div class="main .recipe-form">
+    <h2 class="title">Créer une recette</h2>
     <FormComponent :form="form" />
   </div>
 </template>
