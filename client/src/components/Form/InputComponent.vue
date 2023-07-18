@@ -1,7 +1,18 @@
 <script setup>
-defineProps({
+import { ref } from 'vue'
+
+const props = defineProps({
   recipe: Object
 })
+
+const emit = defineEmits(['itemChange'])
+
+const item = ref('')
+
+const inputHandler = () => {
+  console.log('item', item.value)
+  emit('itemChange', { name: props.recipe.name, value: item.value })
+}
 </script>
 
 <template>
@@ -13,12 +24,16 @@ defineProps({
       :id="recipe.name"
       :placeholder="recipe.placeholder"
       class="input"
+      v-model="item"
+      v-on:input="inputHandler"
       v-if="recipe.type !== 'textarea'"
     />
     <textarea
       :name="recipe.name"
       :id="recipe.name"
       :placeholder="recipe.placeholder"
+      v-model="item"
+      v-on:input="inputHandler"
       v-else
     ></textarea>
   </div>

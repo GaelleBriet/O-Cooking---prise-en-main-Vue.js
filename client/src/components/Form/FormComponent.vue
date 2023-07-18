@@ -1,9 +1,22 @@
 <script setup>
 import InputComponent from './InputComponent.vue'
+import { useRecipesStore } from '../stores/recipes'
+import { useRouter } from 'vue-router'
+import { ref, computed, reactive } from 'vue'
+
+const router = useRouter()
+const recipeStore = useRecipesStore()
 
 const props = defineProps({
-  form: Array
+  form: Array,
+  inputsNumber: Number,
 })
+
+const inputsForm = reactive({});
+
+const changeItem = (obj) => {
+  inputsForm[obj.name] = obj.value
+}
 </script>
 
 <template>
