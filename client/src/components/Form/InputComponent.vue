@@ -10,7 +10,6 @@ const emit = defineEmits(['itemChange'])
 const item = ref('')
 
 const inputHandler = () => {
-  console.log('item', item.value)
   emit('itemChange', { name: props.recipe.name, value: item.value })
 }
 </script>

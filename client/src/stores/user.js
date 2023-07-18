@@ -8,10 +8,7 @@ export const useUserStore = defineStore('users', {
       isLoggedIn: getFromStorage('isLoggedIn') || false,
       firstName: String,
       lastName: String,
-      email: String,
-      pseudo: String,
-      password: String,
-      pwValidation: String
+      id: Number
     },
     users: []
   }),
@@ -19,10 +16,16 @@ export const useUserStore = defineStore('users', {
     login() {
       setToStorage('isLoggedIn', true)
       this.user.isLoggedIn = true
+      this.user.firstName = 'John'
+      this.user.lastName = 'Doe'
+      this.user.id = 1
     },
     logout() {
       setToStorage('isLoggedIn', false)
       this.user.isLoggedIn = false
+      this.user.firstName = ''
+      this.user.lastName = ''
+      this.user.id = ''
     },
     register(user) {
       this.users.push(user)

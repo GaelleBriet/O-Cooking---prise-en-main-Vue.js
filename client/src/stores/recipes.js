@@ -3,6 +3,9 @@ import { defineStore } from 'pinia'
 import { setToStorage } from '../Services/Helpers/useLocalStorage'
 import { getFromStorage } from '../Services/Helpers/useLocalStorage'
 import { fetchRecipes } from '../Services/DataLayer/recipes'
+import { fetchAllRecipesFromDatabase } from '../Services/DataLayer/recipes'
+import { fetchOneRecipeWithCommentsFromDatabase } from '../Services/DataLayer/recipes'
+import { addOneRecipeToDatabase } from '../Services/DataLayer/recipes'
 
 export const useRecipesStore = defineStore('recipes', {
   state: () => ({
@@ -40,6 +43,38 @@ export const useRecipesStore = defineStore('recipes', {
       } catch (error) {
         console.error('Erreur lors de la récupération des recettes', error)
       }
+    },
+    async fetchAllRecipesFromService() {
+      this.data = await fetchAllRecipesFromDatabase()
+    },
+    async fetchOneRecipeWithCommentsFromService(id) {
+      this.data = await fetchOneRecipeWithCommentsFromDatabase(id)
+    },
+    async addOneRecipeFromService(obj) {
+      await addOneRecipeToDatabase(obj)
+      this.data = await this.fetchAllRecipesFromService()
     }
   }
 })
+
+// export const useRecipesStore = defineStore('recipes', {
+//   state: () => ({
+//       recipes: [],
+//       recipe: null,
+//   }),
+//   getters: {
+//     //getRecipeById: (state) => (id) => state.recipes.find(r => r.id === Number(id)),
+//   },
+//   actions: {
+//   async fetchAllRecipesFromService() {
+//       this.recipes = await RecipesService.fetchAllRecipesFromDatabase()
+//   },
+//   async fetchOneRecipeWithCommentsFromService(id){
+//       this.recipe = await RecipesService.fetchOneRecipeWithCommentsFromDatabase(id)
+//   },
+//   async addOneRecipeFromService(obj){
+//       await RecipesService.addOneRecipeToDatabase(obj)
+//       this.recipes = await this.fetchAllRecipesFromService()
+//   }
+//   },
+// })
