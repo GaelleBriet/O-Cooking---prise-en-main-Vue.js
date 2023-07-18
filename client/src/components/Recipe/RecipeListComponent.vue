@@ -6,11 +6,10 @@ import { computed } from 'vue'
 const recipeStore = useRecipesStore()
 const recipes = computed(() => recipeStore.getRecipes)
 const isLoaded = computed(() => recipeStore.isLoaded)
-
 </script>
 
 <template>
-  <template v-if="isLoaded">
+  <div v-if="isLoaded">
     <template v-for="recipe in recipes" :key="recipe.id">
       <RecipeCardComponent
         image="https://picsum.photos/400/300?grayscale"
@@ -20,7 +19,10 @@ const isLoaded = computed(() => recipeStore.isLoaded)
         :id="recipe.id"
       />
     </template>
-  </template>
+  </div>
+  <div v-else>
+    <p>Chargement des recettes ...</p>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>
