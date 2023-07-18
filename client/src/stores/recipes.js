@@ -33,7 +33,7 @@ export const useRecipesStore = defineStore('recipes', {
     async fetchOneRecipeWithCommentsFromService(id) {
       this.data = await fetchOneRecipeWithCommentsFromDatabase(id)
     },
-    async addOneRecipeFromService(obj) {
+    async addRecipe(obj) {
       await addOneRecipeToDatabase(obj)
       this.data = await this.fetchAllRecipesFromService()
     }

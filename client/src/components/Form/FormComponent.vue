@@ -23,7 +23,7 @@ const changeItem = (obj) => {
 }
 
 const handleSubmit = () => {
-  recipeStore.addOneRecipeFromService(inputsForm)
+  recipeStore.addRecipe(inputsForm)
   router.push('/')
 }
 </script>

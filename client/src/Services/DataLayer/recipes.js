@@ -7,7 +7,6 @@ export async function fetchAllRecipesFromDatabase() {
     .catch((error) => {
       console.log(error.toJSON())
     })
-  console.log(response)
   // return response.data
   return response
 }
@@ -18,7 +17,7 @@ export async function fetchOneRecipeWithCommentsFromDatabase(id) {
   return data
 }
 
-export async function getOneRecipes(id) {
+export async function getOneRecipe(id) {
   try {
     const response = await axios.get('http://gaellebriet-server.eddi.cloud:8090/recipes/' + id)
     return response.data
@@ -39,6 +38,17 @@ export async function addOneRecipeToDatabase(recipe) {
     .catch(function (error) {
       console.log(error.toJSON())
     })
+}
+export async function addRecipe($recipe) {
+  const response = await axios
+    .post('http://localhost:8090/recipes', {
+      body: JSON.stringify($recipe)
+    })
+    .then((response) => response.data)
+    .catch((error) => {
+      console.log(error.toJSON())
+    })
+  return response
 }
 
 // async fetchAllRecipesFromDatabase() {
