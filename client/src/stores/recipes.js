@@ -26,7 +26,12 @@ export const useRecipesStore = defineStore('recipes', {
       this.loaded = true
     },
     async fetchOneRecipeWithCommentsFromService(id) {
-      this.data = await fetchOneRecipeWithCommentsFromDatabase(id)
+      //this.data = await fetchOneRecipeWithCommentsFromDatabase(id)
+      this.loaded = false;
+      const recipe = await fetchOneRecipeWithCommentsFromDatabase(id)
+      this.data = recipe;
+      this.loaded = true;
+      return recipe
     },
     async addRecipe(obj) {
       await addOneRecipeToDatabase(obj)

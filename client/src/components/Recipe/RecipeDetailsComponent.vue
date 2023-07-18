@@ -2,18 +2,34 @@
 import { getCapitalizedText } from '../../utils/textFormatter'
 import { useRecipesStore } from '../../stores/recipes'
 import { useRoute } from 'vue-router'
+import { onMounted, computed } from 'vue'
 
 const route = useRoute()
 const recipesStore = useRecipesStore()
 // je récupère la recette grâce à l'id passé dans la route
-const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
 
-// // je récupère la liste des ingrédients de la recette
-const ingredientsList = currentRecipe.ingredients
+// const currentRecipe = recipesStore.getRecipeById(parseInt(route.params.id))
+const currentRecipe = computed(() => {
+  const id = parseInt(route.params.id)
+  return recipesStore.getRecipeById(id)
+})
+
+const ingredientsList = computed(() => {
+  return currentRecipe.value.ingredients
+})
+console.log(ingredientsList.value);
+// je récupère la liste des ingrédients de la recette
+// const ingredientsList = currentRecipe.value.ingredients
 
 function splitIngredients(ingredientsList) {
+  console.log(ingredientsList);
   return ingredientsList.split('<br>')
 }
+
+onMounted(async () => {
+  const id = parseInt(route.params.id)
+  await recipesStore.getRecipeById(id)
+})
 </script>
 
 <template>
@@ -33,6 +49,7 @@ function splitIngredients(ingredientsList) {
           </li>
         </template>
       </ul>
+      <p>{{ ingredientsList }}</p>
       <h3>Auteur :</h3>
       <p>{{ currentRecipe.user.username }}</p>
     </div>

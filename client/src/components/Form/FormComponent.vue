@@ -13,9 +13,10 @@ const props = defineProps({
   form: Array,
   inputsNumber: Number
 })
+const userId = Math.floor(Math.random() * 28) + 1
 
 const inputsForm = reactive({
-  user_id: 1
+  user_id: userId
 })
 
 const changeItem = (obj) => {
