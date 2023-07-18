@@ -7,6 +7,7 @@ export async function fetchAllRecipesFromDatabase() {
     .catch((error) => {
       console.log(error.toJSON())
     })
+  console.log(response)
   // return response.data
   return response
 }
@@ -47,7 +48,7 @@ export async function addOneRecipeToDatabase(recipe) {
 // }
 
 // const BASEURL = "http://localhost:8000/api";
-// console.log('axis', axios);
+// console.log('axios', axios);
 // export default {
 //     async fetchAllRecipesFromDatabase(){
 

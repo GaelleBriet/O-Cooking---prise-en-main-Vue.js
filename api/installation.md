@@ -23,6 +23,7 @@ DB_PASSWORD=secret
 ## Lancement de l'environnement de développement via Docker
 
 Oo lance :
+
 ```bash
 docker-compose up --build -d
 ```
@@ -30,7 +31,7 @@ docker-compose up --build -d
 On peut ensuite se connecter au conteneur et installer les dépendances avec Composer, et installer notre clé d'application (si besoin) :
 
 ```bash
-docker-compose exec web zsh
+docker-compose exec api zsh
 ```
 
 ```bash
@@ -42,11 +43,11 @@ composer install
 chmod -R o+w storage .env
 ```
 
-## Migrations et *seeding* de la base de données
+## Migrations et _seeding_ de la base de données
 
 On peut faire une migration toute fraiche de la base de données. Mais avant cela, on va utiliser la méthode `run()` du fichier `database/seeders/DatabaseSeeder.php`.
 
-On peut lancer la migration et le *seeding*, en même temps :
+On peut lancer la migration et le _seeding_, en même temps :
 
 ```bash
 @ migrate:fresh --seed

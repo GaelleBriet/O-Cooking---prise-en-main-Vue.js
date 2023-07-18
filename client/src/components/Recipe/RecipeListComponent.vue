@@ -1,20 +1,16 @@
 <script setup>
 import RecipeCardComponent from './RecipeCardComponent.vue'
 import { useRecipesStore } from '../../stores/recipes'
-import { onMounted } from 'vue'
+import { computed } from 'vue'
 
 const recipeStore = useRecipesStore()
-// recipeStore.fetchAllRecipesFromService()
+const recipes = computed(() => recipeStore.getRecipes)
+const isLoaded = computed(() => recipeStore.isLoaded)
 
-const recipes = recipeStore.getRecipes
-
-onMounted(() => {
-  recipeStore.fetchAllRecipesFromService()
-})
 </script>
 
 <template>
-  <template v-if="recipes.length > 0">
+  <template v-if="isLoaded">
     <template v-for="recipe in recipes" :key="recipe.id">
       <RecipeCardComponent
         image="https://picsum.photos/400/300?grayscale"

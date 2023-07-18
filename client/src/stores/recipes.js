@@ -8,25 +8,26 @@ import { reactive, ref } from 'vue'
 
 export const useRecipesStore = defineStore('recipes', {
   state: () => ({
-    data: getFromStorage('recipes') || []
+    // data: getFromStorage('recipes') || []
     //data: []
-    // data: reactive([])
-
+    data: reactive([]),
     // recipes : reactive([]),
-    // loaded : ref(false),
+    loaded: false
     // recipe : reactive({}),
   }),
   getters: {
     getRecipes: (state) => state.data,
     getRecipeById: (state) => (id) => {
       return state.data.find((recipe) => recipe.id === id) || null
-    }
+    },
+    isLoaded: (state) => state.loaded
   },
   actions: {
     async fetchAllRecipesFromService() {
       //  this.data = await fetchAllRecipesFromDatabase()
       const recipes = await fetchAllRecipesFromDatabase()
       this.data = recipes
+      this.loaded = true
       // setToStorage('recipes', recipes)
     },
     async fetchOneRecipeWithCommentsFromService(id) {
