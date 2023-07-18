@@ -22,28 +22,6 @@ export const useRecipesStore = defineStore('recipes', {
     }
   },
   actions: {
-    saveRecipe(recipe) {
-      this.data.push(recipe)
-      setToStorage('recipe', recipe)
-    },
-    //   try {
-    //     const recipes = await getRecipes()
-    //     this.data = recipes
-    //     console.log(this.data)
-    //   } catch (error) {
-    //     console.error('Erreur lors de la récupération des recettes', error)
-    //   }
-    // },
-    async fetchAll() {
-      try {
-        const recipes = await fetchRecipes()
-        this.data = recipes
-        setToStorage('recipes', recipes)
-        console.log(this.data)
-      } catch (error) {
-        console.error('Erreur lors de la récupération des recettes', error)
-      }
-    },
     async fetchAllRecipesFromService() {
       this.data = await fetchAllRecipesFromDatabase()
     },
@@ -54,27 +32,27 @@ export const useRecipesStore = defineStore('recipes', {
       await addOneRecipeToDatabase(obj)
       this.data = await this.fetchAllRecipesFromService()
     }
+    // saveRecipe(recipe) {
+    //   this.data.push(recipe)
+    //   setToStorage('recipe', recipe)
+    // },
+    // //   try {
+    // //     const recipes = await getRecipes()
+    // //     this.data = recipes
+    // //     console.log(this.data)
+    // //   } catch (error) {
+    // //     console.error('Erreur lors de la récupération des recettes', error)
+    // //   }
+    // // },
+    // async fetchAll() {
+    //   try {
+    //     const recipes = await fetchRecipes()
+    //     this.data = recipes
+    //     setToStorage('recipes', recipes)
+    //     console.log(this.data)
+    //   } catch (error) {
+    //     console.error('Erreur lors de la récupération des recettes', error)
+    //   }
+    // },
   }
 })
-
-// export const useRecipesStore = defineStore('recipes', {
-//   state: () => ({
-//       recipes: [],
-//       recipe: null,
-//   }),
-//   getters: {
-//     //getRecipeById: (state) => (id) => state.recipes.find(r => r.id === Number(id)),
-//   },
-//   actions: {
-//   async fetchAllRecipesFromService() {
-//       this.recipes = await RecipesService.fetchAllRecipesFromDatabase()
-//   },
-//   async fetchOneRecipeWithCommentsFromService(id){
-//       this.recipe = await RecipesService.fetchOneRecipeWithCommentsFromDatabase(id)
-//   },
-//   async addOneRecipeFromService(obj){
-//       await RecipesService.addOneRecipeToDatabase(obj)
-//       this.recipes = await this.fetchAllRecipesFromService()
-//   }
-//   },
-// })

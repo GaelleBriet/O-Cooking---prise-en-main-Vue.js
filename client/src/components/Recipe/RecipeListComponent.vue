@@ -5,9 +5,9 @@ import { useRecipesStore } from '../../stores/recipes'
 const recipeStore = useRecipesStore()
 // const recipes = recipeStore.data
 
-recipeStore.fetchAll()
+// recipeStore.fetchAll()
+recipeStore.fetchAllRecipesFromService()
 const recipes = recipeStore.getRecipes
-console.log(recipes)
 </script>
 
 <template>
