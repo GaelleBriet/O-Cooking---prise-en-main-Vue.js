@@ -9,11 +9,8 @@ import { reactive, ref } from 'vue'
 export const useRecipesStore = defineStore('recipes', {
   state: () => ({
     // data: getFromStorage('recipes') || []
-    //data: []
     data: reactive([]),
-    // recipes : reactive([]),
     loaded: false
-    // recipe : reactive({}),
   }),
   getters: {
     getRecipes: (state) => state.data,
@@ -24,18 +21,18 @@ export const useRecipesStore = defineStore('recipes', {
   },
   actions: {
     async fetchAllRecipesFromService() {
-      //  this.data = await fetchAllRecipesFromDatabase()
       const recipes = await fetchAllRecipesFromDatabase()
       this.data = recipes
       this.loaded = true
-      // setToStorage('recipes', recipes)
     },
     async fetchOneRecipeWithCommentsFromService(id) {
       this.data = await fetchOneRecipeWithCommentsFromDatabase(id)
     },
     async addRecipe(obj) {
       await addOneRecipeToDatabase(obj)
-      this.data = await this.fetchAllRecipesFromService()
+      this.data.push(obj)
+      // this.data = await this.fetchAllRecipesFromService()
+      this.loaded = true
     }
   }
 })

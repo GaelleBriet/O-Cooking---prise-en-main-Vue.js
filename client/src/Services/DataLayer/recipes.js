@@ -39,17 +39,17 @@ export async function addOneRecipeToDatabase(recipe) {
       console.log(error.toJSON())
     })
 }
-export async function addRecipe($recipe) {
-  const response = await axios
-    .post('http://localhost:8090/recipes', {
-      body: JSON.stringify($recipe)
-    })
-    .then((response) => response.data)
-    .catch((error) => {
-      console.log(error.toJSON())
-    })
-  return response
-}
+// export async function addRecipe($recipe) {
+//   const response = await axios
+//     .post('http://localhost:8090/recipes', {
+//       body: JSON.stringify($recipe)
+//     })
+//     .then((response) => response.data)
+//     .catch((error) => {
+//       console.log(error.toJSON())
+//     })
+//   return response
+// }
 
 // async fetchAllRecipesFromDatabase() {
 //   return axios.get(`${BASEURL}/recipes`)
