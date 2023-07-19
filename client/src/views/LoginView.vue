@@ -11,51 +11,50 @@ const user = ref({
   password: ''
 })
 
-const login = (e) => {
-  e.preventDefault()
-
-  const email = user.value.email
-  const password = user.value.password
-
-  const userCredentials = {
-    email,
-    password
-  }
-
-  userStore.login(userCredentials)
-
-  user.value.email = ''
-  user.value.password = ''
-
-  router.push('/')
-}
-
 // const login = (e) => {
 //   e.preventDefault()
 
-//   const email = e.target.email.value
-//   const password = e.target.password.value
+//   let password = ""
 
-//   const user = {
-//     email,
-//     password
+//  // const email = user.value.email
+//   if (user.value.password === 'pass') {
+//      password = user.value.password
+//   } else {
+//     console.error('Erreur de mot de passe!')
 //   }
 
-//   userStore.login(user)
+//   const userCredentials = {
+//    // email,
+//     password,
+//   }
 
-//   //e.target.reset()
-//   e.target.email.value = ''
-//   e.target.password.value = ''
+//   userStore.login(userCredentials)
+
+//   // user.value.email = ''
+//   user.value.password = ''
 
 //   router.push('/')
 // }
+
+const error = ref('');
+async function login2() {
+  error.value = "";
+  //simuler authentification
+  const { success, message} = await userStore.loginUser(user.value.password);
+  if (success) {
+    console.log(message);
+    await router.push('/');
+  } else {
+    error.value = message;
+  }
+}
 </script>
 
 <template>
   <div class="main">
     <h2 class="title">connexion</h2>
 
-    <form @submit="login">
+    <form @submit.prevent="login2">
       <div>
         <label class="label" for="email">E-mail</label>
         <input
@@ -65,6 +64,7 @@ const login = (e) => {
           id="email"
           placeholder="johndoe@ocooking.local"
           v-model="user.email"
+          disabled
         />
       </div>
 
@@ -81,6 +81,7 @@ const login = (e) => {
 
       <input class="submit" type="submit" value="Se connecter" />
     </form>
+    <div v-if="error">{{  error  }}</div>
   </div>
 </template>
 

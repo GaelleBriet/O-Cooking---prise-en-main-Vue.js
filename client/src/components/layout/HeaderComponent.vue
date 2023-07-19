@@ -39,8 +39,9 @@ const logout = () => {
     </div>
     <div v-if="isLoggedIn" id="account">
       <div id="name">
-        <p>John Doe</p>
+        <p>{{ userStore.user.username }}</p>
       </div>
+
       <ul>
         <li>
           <img
@@ -70,7 +71,7 @@ const logout = () => {
   top: 40px;
   right: 10px;
 
-  .logoutButton{
+  .logoutButton {
     display: flex;
     align-items: center;
     justify-content: flex-end;
